@@ -13,4 +13,4 @@ for s in itemlist:
 	with open("foo.txt", "r+") as f:
 		old = f.read() # read everything in the file
 		f.seek(0) # rewind
-		f.write(s.childNodes[5].childNodes[0].nodeValue + "\n" + s.childNodes[1].childNodes[0].nodeValue + "\n" + s.childNodes[3].childNodes[0].nodeValue + "\n" + old)
+		f.write(old + s.childNodes[5].childNodes[0].nodeValue + "\n" + s.childNodes[1].childNodes[0].nodeValue + "\n" + s.childNodes[3].childNodes[0].nodeValue + "\n")
