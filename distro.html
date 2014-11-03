@@ -1,0 +1,45 @@
+<html>
+<head><title>Distro Crawl</title>
+</head>
+
+<body>
+	<div class="containter">
+		<h1>Crawler</h1>
+		<input type="text" id="search" placeholder="Silahkan cari di sini">
+		<hr>
+		<div id="isi">
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script>
+
+	var data = [];
+
+	$.getJSON("data.json",function(json){
+		isi = "";
+		data = json;
+		for (x in json){
+			isi = isi + "<div style='display:inline-block; width:22%; padding: 15px'><h3>"+json[x][0]+"</h3><img src='"+json[x][1]+"'><hr>"+json[x][2]+"</div>";
+		}
+		$("#isi").html(isi);
+	});
+
+
+	$("#search").change(function(){
+		var hasilcari = [];
+		pencarian = $("#search").val();
+		for (x in data){
+			if(data[x][0].toLowerCase().search(pencarian.toLowerCase()) != -1){
+				hasilcari.push(data[x]);
+			}
+		}
+		isi = "";
+		for (x in hasilcari){
+			isi = isi + "<div style='display:inline-block; width:22%; padding: 15px'><h3>"+hasilcari[x][0]+"</h3><img src='"+hasilcari[x][1]+"'><hr>"+hasilcari[x][2]+"</div>";
+		}
+		$("#isi").html(isi);
+	});
+
+</script>
+</html>
